@@ -1,0 +1,39 @@
+
+    <form action="/register" method="POST">
+<br><br><br>
+{{#if errormanu}}
+<div class="form-floating">
+  <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="modelo" placeholder="Modelo" value="">
+  <label for="floatingInputInvalid">Fabricante</label>
+</div><br>
+{{else}}
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="fabricante" placeholder="Fabricante">
+                <label for="floatingInputValue">Fabricante</label>
+            </div><br>
+{{/if}}
+{{#if errormodel}}
+       <div class="form-floating">
+  <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="modelo" placeholder="Modelo" value="">
+  <label for="floatingInputInvalid">Modelo</label>
+</div><br>
+{{else}}
+            <div class="form-floating">
+             <input type="text" class="form-control" name="modelo" placeholder="Modelo">
+                <label for="floatingPassword">Modelo</label>
+            </div><br>
+{{/if}}
+{{#if errorprice}}
+ <div class="form-floating">
+  <input type="number" class="form-control is-invalid" id="floatingInputInvalid" name="price" placeholder="Preço R$" value="">
+  <label for="floatingInputInvalid">Preço R$</label>
+</div><br>
+{{else}}
+            <div class="form-floating">
+             <input type="number" class="form-control" name="preço" placeholder="Preço">
+                <label for="floatingPassword">Preço R$</label>
+            </div><br><br>
+{{/if}}
+        <button type="submit">Registrar</button>
+
+</form>
