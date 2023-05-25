@@ -1,39 +1,69 @@
+<div class="background-color">
+  <!-- Menu left -->
+<div class="menu-space">
+   <div class="menu">
+      
+      <div id="menu-options">
+        <a href="/register" class="options" id="menu-remover">Remover</a>
+        <a href="/register" class="options" id="menu-registers">Registros</a>
+        
+      </div>
+  </div>
+</div>
 
-    <form action="/register" method="POST">
-<br><br><br>
-{{#if errormanu}}
-<div class="form-floating">
-  <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="modelo" placeholder="Modelo" value="">
-  <label for="floatingInputInvalid">Fabricante</label>
-</div><br>
-{{else}}
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="fabricante" placeholder="Fabricante">
-                <label for="floatingInputValue">Fabricante</label>
-            </div><br>
-{{/if}}
-{{#if errormodel}}
-       <div class="form-floating">
-  <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="modelo" placeholder="Modelo" value="">
-  <label for="floatingInputInvalid">Modelo</label>
-</div><br>
-{{else}}
-            <div class="form-floating">
-             <input type="text" class="form-control" name="modelo" placeholder="Modelo">
-                <label for="floatingPassword">Modelo</label>
-            </div><br>
-{{/if}}
-{{#if errorprice}}
- <div class="form-floating">
-  <input type="number" class="form-control is-invalid" id="floatingInputInvalid" name="price" placeholder="Preço R$" value="">
-  <label for="floatingInputInvalid">Preço R$</label>
-</div><br>
-{{else}}
-            <div class="form-floating">
-             <input type="number" class="form-control" name="preço" placeholder="Preço">
-                <label for="floatingPassword">Preço R$</label>
-            </div><br><br>
-{{/if}}
-        <button type="submit">Registrar</button>
+<!-- Body -->
+<div class="Background-register"> 
 
-</form>
+
+
+            <form action="/register" method="POST" enctype="multipart/form-data">
+        
+        {{#if errormanu}}
+        <div class="form-floating">
+          <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="fabricante" placeholder="Modelo" value="">
+          <label for="floatingInputInvalid">Fabricante</label>
+        </div>
+
+        {{else}}
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="fabricante" placeholder="Fabricante">
+                        <label for="floatingInputValue">Fabricante</label>
+                    </div>
+        {{/if}}
+        {{#if errormodel}}
+              <div class="form-floating">
+          <input type="text" class="form-control is-invalid" id="floatingInputInvalid" name="modelo" placeholder="Modelo" value="">
+          <label for="floatingInputInvalid">Modelo</label>
+        </div>
+        {{else}}
+                    <div class="form-floating">
+                    <input type="text" class="form-control" name="modelo" placeholder="Modelo">
+                        <label for="floatingPassword">Modelo</label>
+                    </div>
+        {{/if}}
+        {{#if errorprice}}
+        <div class="form-floating">
+          <input type="number" class="form-control is-invalid" id="floatingInputInvalid" name="preco" placeholder="Preço R$" value="">
+          <label for="floatingInputInvalid">Preço R$</label>
+        </div>
+        {{else}}
+                    <div class="form-floating">
+                    <input type="number" class="form-control" name="preco" placeholder="Preço">
+                        <label for="floatingPassword">Preço R$</label>
+                    </div><br>
+        {{/if}}
+       <h2>Escolha foto do veículo</h2>
+              <div id="file-input">
+                  <div id="file-label">
+                    <label class="picture"  tabIndex="0" for="file">
+                      <span>CARREGAR FOTO</span>
+                    </label>
+                      <p><input type="file" name="file" id="file" name="file" required="true" ></p>
+              </div>
+
+              <div id="button-control">
+                  <button type="submit" id="button-register">Cadastrar</button>
+                  </div>
+                </form>
+                </div>
+</div>

@@ -6,9 +6,9 @@
  const {engine} = require('express-handlebars')
  const server = require('./routes/server')
  const {conn} = require('./routes/server')
-const { urlencoded } = require('body-parser')
-const { type } = require('os')
- 
+ const { urlencoded } = require('body-parser')
+ const { type } = require('os')
+ const upload = require('./views/src/scripts')
  //Configurações de path
  
  
@@ -29,26 +29,36 @@ app.use(urlencoded({
  app.set('view engine', 'handlebars')
  app.set('views', './views')
  
+ 
  // Rotas
 
 app.get('/', (req, res)=>{
-   
     res.render("home");
 })
 
 app.get('/register', (req, res)=>{
+
     res.render('register')
     
 })
 
-app.post('/register', (req, res)=>{
+app.get('/remove', (req, res)=>{
+    const query = "SELECT * FROM veiculos"
+    conn.query(query, (err, resultsRemove, fields)=>{
+        res.render('remove', {resultsRemove})
+    })
+})
+
+app.post('/register', upload.upload.single('file'), (req, res)=>{
     const errormanu = []
     const errormodel =[]
     const errorprice = []
     
     const fabricante = req.body.fabricante
     const modelo = req.body.modelo
-    const preço = req.body.preço
+    const preço = req.body.preco
+
+    
         if(!fabricante || typeof fabricante == undefined || typeof fabricante == null) {
             errormanu.push({texto:'favor inserir fabricante'})
         }
@@ -63,12 +73,13 @@ app.post('/register', (req, res)=>{
             console.log(errormanu)
             console.log(errormodel)
             console.log(errorprice)
+            module.exports = {errormanu, errormodel, errorprice}
         } else{
         const manu = req.body.fabricante
         const model = req.body.modelo
-        const price = req.body.preço
+        const price = req.body.preco
         const SQL = 'INSERT INTO veiculos (??, ??, ??) VALUES (?, ?, ?)'
-        const data = ['fabricante', 'preco', 'modelo', fabricante, price, model]
+        const data = ['fabricante', 'preco', 'modelo', manu, price, model]
 
         conn.query(SQL, data, (err)=>{
             if(err){
@@ -80,10 +91,32 @@ app.post('/register', (req, res)=>{
                 
             }
         })}
-        
-        
 })
 
+app.get('/cars', (req, res)=>{
+    console.log(req.query)
+    const query = "SELECT * FROM veiculosdb";
+    conn.query(query, (err, results, fields)=>{
+        if(err){ console.log(err)
+        } else {
+            res.render('cars', {results})
+        }
+            
+    })
+    
+})
+
+app.get('/sucess', (req, res)=>{
+    let id = req.query.id
+    let query = "DELETE FROM veiculos WHERE veiculos.id=?"
+    let data = [id]
+    conn.query(query, data, (err)=>{
+        if(err) {
+            console.log(`error in injection:${err} `)
+        }
+    })
+    res.render('sucess')
+})
  app.listen(port, ()=>{
     console.log(`Server running in port ${port}... `)
  })

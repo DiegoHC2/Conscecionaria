@@ -1,0 +1,55 @@
+<div class="background-color">
+    <!-- Menu Left -->
+    <div class="menu-space">
+            <div class="menu">
+                
+                <div id="menu-options">
+                    <a href="/" class="options" id="menu-remover">Home</a>
+                    <a href="/register" class="options">Cadastrar</a>
+                    <a href="/cars" class="options" id="menu-registers">Registros</a>
+                    
+                </div>
+            </div>
+    </div>
+    <!-- Body -->
+    
+<div class="Background-register" id="background-remove">
+    <div id="background-space">
+        
+         <table class="table table-dark">
+  <thead class="thead-dark">
+    <tr>
+      <th class="center"scope="col">Foto</th>
+      <th scope="col">Fabricante</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Opção</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each resultsRemove}}
+    <tr>
+      <td class="center"><img id="img-remove"src="../images/bdimgs/image_{{this.id}}.jpg" alt="img"></td>
+      <td>{{this.fabricante}}</td>
+      <td>{{this.modelo}}</td>
+      <td>{{this.preco}}</td>
+      <td>
+        <!-- Pen-->
+            <a href="#" id="edit" class="bi bi-pen"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+              <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+              </svg>
+            </a>
+             <!-- Remove-->
+             <a href="/sucess?id={{this.id}}" id="edit" class="btn-close btn-close-white" aria-label="Close"></a>
+
+
+        </td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+        </table>
+    </div>
+</div>
+
+</div>
